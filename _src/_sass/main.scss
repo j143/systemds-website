@@ -7,6 +7,35 @@
 // Import Bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+// Bootstrap overrides to maintain original design
+// Remove Bootstrap's default link underlines and styling
+a {
+  text-decoration: none !important;
+  
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+// Override Bootstrap's default margins and padding that conflict with custom layout
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// Ensure custom grid system works alongside Bootstrap
+.ml-container {
+  // Reset any Bootstrap container interference
+  padding-left: 15px;
+  padding-right: 15px;
+  
+  // Override Bootstrap's default row margins in custom containers
+  .row {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+
 // Mixins
 @import "mixins.scss";
 
