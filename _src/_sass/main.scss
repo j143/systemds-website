@@ -1,7 +1,11 @@
 @import "vendor/ap-components.min.scss";
 @import "config.scss";
 
-@import "susy";
+// Import modern normalize.css
+@import "../../node_modules/normalize.css/normalize.css";
+
+// Import Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
 
 // Mixins
 @import "mixins.scss";
