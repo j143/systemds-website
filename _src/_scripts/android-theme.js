@@ -14,6 +14,8 @@
     initializeMobileNavigation();
     initializeThemeToggle();
     initializeScrollEffects();
+    initializeCodeBlocks();
+    initializeCodeTabs();
   });
   
   // Theme initialization
@@ -270,6 +272,90 @@
       activeElement.tagName === 'TEXTAREA' ||
       activeElement.contentEditable === 'true'
     );
+  }
+  
+  // Code block functionality
+  function initializeCodeBlocks() {
+    var copyButtons = document.querySelectorAll('[data-copy-code]');
+    
+    for (var i = 0; i < copyButtons.length; i++) {
+      copyButtons[i].addEventListener('click', function() {
+        var codeBlock = this.closest('.code-block');
+        var codeContent = codeBlock.querySelector('pre code');
+        
+        if (codeContent) {
+          var textToCopy = codeContent.textContent;
+          
+          // Use the Clipboard API if available
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(textToCopy).then(function() {
+              showCopySuccess(this);
+            }.bind(this));
+          } else {
+            // Fallback for older browsers
+            var textArea = document.createElement('textarea');
+            textArea.value = textToCopy;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+              document.execCommand('copy');
+              showCopySuccess(this);
+            } catch (err) {
+              console.error('Failed to copy text: ', err);
+            }
+            
+            document.body.removeChild(textArea);
+          }
+        }
+      });
+    }
+    
+    function showCopySuccess(button) {
+      button.classList.add('copied');
+      setTimeout(function() {
+        button.classList.remove('copied');
+      }, 2000);
+    }
+  }
+  
+  // Code tabs functionality
+  function initializeCodeTabs() {
+    var tabButtons = document.querySelectorAll('[data-tab]');
+    
+    for (var i = 0; i < tabButtons.length; i++) {
+      tabButtons[i].addEventListener('click', function() {
+        var tabId = this.getAttribute('data-tab');
+        var tabContainer = this.closest('.code-tabs');
+        
+        if (tabContainer) {
+          // Remove active class from all tab buttons in this container
+          var allButtons = tabContainer.querySelectorAll('[data-tab]');
+          for (var j = 0; j < allButtons.length; j++) {
+            allButtons[j].classList.remove('active');
+          }
+          
+          // Remove active class from all tab panels in this container
+          var allPanels = tabContainer.querySelectorAll('[data-tab-panel]');
+          for (var k = 0; k < allPanels.length; k++) {
+            allPanels[k].classList.remove('active');
+          }
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Add active class to corresponding panel
+          var targetPanel = tabContainer.querySelector('[data-tab-panel="' + tabId + '"]');
+          if (targetPanel) {
+            targetPanel.classList.add('active');
+          }
+        }
+      });
+    }
   }
   
   // Smooth scrolling for anchor links
