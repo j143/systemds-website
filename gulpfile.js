@@ -16,7 +16,7 @@ const config = {
       src: '_src/_sass/**/*.?(s)css'
     },
     jsFiles: [
-      '_src/_scripts/jquery-2.1.1.min.js',
+      'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
       '_src/_scripts/jquery.fitvids.js',
       '_src/_scripts/ap-components.min.js',
       '_src/_scripts/main.js'
@@ -50,7 +50,7 @@ function style() {
   return gulp.src(config.paths.styles.src)
     .pipe(sourcemaps.init())
     .pipe(sass({
-      includePaths: ['node_modules/susy/sass'],
+      includePaths: ['node_modules/bootstrap/scss', 'node_modules'],
       onError: browserSync.notify
     }))
     .pipe(concat('main.css'))
@@ -69,7 +69,7 @@ function style() {
  function js() {
    return gulp.src(config.paths.jsFiles)
      .pipe(concat('bundle.min.js'))
-     .pipe(uglify())
+     // Skip uglify for now to avoid ES6 issues with Bootstrap
      .pipe(gulp.dest('./_src/assets/js'));
  }
 

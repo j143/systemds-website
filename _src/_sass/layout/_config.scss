@@ -1,10 +1,5 @@
-$susy: (
-  columns: 12,
-  gutters: 1.953125,
-  math: fluid,
-  output: float,
-  gutter-position: inside
-);
+// Bootstrap grid is now used instead of Susy
+// Grid configuration is handled by Bootstrap
 
 @mixin clearfix {
   &:after {

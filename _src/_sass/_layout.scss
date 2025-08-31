@@ -128,53 +128,83 @@
     }
   }
 
-  // full screen view
+  // Use Bootstrap container behavior instead of Susy
+  // Apply container-fluid behavior manually to avoid @extend issues
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  
+  // Override container max-width for specific breakpoints if needed
   @media (min-width: 64em){
-    // constrain content width to 1024px
-    @include container(64em);
+    max-width: 64em;
   }
 
   // full screen view
   @media (min-width: 75em){
-    // constrain content width to 1200px
-    @include container(75em);
+    max-width: 75em;
   }
 
 }
 
-// grid system for content
+// Bootstrap row class
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+// Bootstrap grid system is used instead of custom .col classes
+// Use Bootstrap classes: col-1, col-2, col-3, col-4, col-6, col-8, col-9, col-10, col-12
+// and responsive variants: col-sm-*, col-md-*, col-lg-*, col-xl-*
+
+// Legacy .col classes for backward compatibility 
 .col {
   // mobile first all columns full-width
+  position: relative;
   width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
 
-  // column system applies at 1024px width
+  // column system applies at medium breakpoint (Bootstrap md)
   @media (min-width: $bp-medium){
     &-1 {
-      @include span(1 of 12);
+      flex: 0 0 8.333333%;
+      max-width: 8.333333%;
     }
     &-2 {
-      @include span(2 of 12);
+      flex: 0 0 16.666667%;
+      max-width: 16.666667%;
     }
     &-3 {
-      @include span(3 of 12);
+      flex: 0 0 25%;
+      max-width: 25%;
     }
     &-4 {
-      @include span(4 of 12);
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
     }
     &-6 {
-      @include span(6 of 12);
+      flex: 0 0 50%;
+      max-width: 50%;
     }
     &-8 {
-      @include span(8 of 12);
+      flex: 0 0 66.666667%;
+      max-width: 66.666667%;
     }
     &-9 {
-      @include span(9 of 12);
+      flex: 0 0 75%;
+      max-width: 75%;
     }
     &-10 {
-      @include span(10 of 12);
+      flex: 0 0 83.333333%;
+      max-width: 83.333333%;
     }
     &-12 {
-      @include span(12 of 12);
+      flex: 0 0 100%;
+      max-width: 100%;
     }
   }
 }
@@ -311,19 +341,23 @@
 }
 
 .profile {
-  @include gallery(3 of 12);
+  // Use Bootstrap columns instead of Susy gallery
+  // Default: 3 of 12 = col-4 (25% width)
+  width: 33.333333%; // 4 columns
+  display: inline-block;
+  padding: 0 15px;
   // margin-bottom: 1.953125%;
 }
 
 @media(max-width:1000px){
   .profile {
-    @include gallery(4 of 12);
+    width: 25%; // 3 columns (4 of 12)
   }
 }
 
 @media(max-width:500px){
   .profile {
-    @include gallery(6 of 12);
+    width: 50%; // 2 columns (6 of 12)
   }
 }
 
@@ -335,7 +369,8 @@
 }
 
 .content {
-  @include span(4 of 12);
+  // 4 of 12 columns = 33.333333% width
+  width: 33.333333%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

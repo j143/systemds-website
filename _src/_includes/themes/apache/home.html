@@ -21,12 +21,16 @@ limitations under the License.
 <section class="full-stripe full-stripe--video">
   <!-- content -->
   <div class="ml-container ml-container--horizontally-center ml-container--halfway">
-    <div class="col col-12 content-group">
-      <h1>{{ site.data.project.name }}</h1>
-      <p>An open source ML system for the end-to-end data science lifecycle</p>
+    <div class="row">
+      <div class="col col-12 content-group">
+        <h1>{{ site.data.project.name }}</h1>
+        <p>An open source ML system for the end-to-end data science lifecycle</p>
+      </div>
     </div>
-    <div class="col col-12 content-group button-group">
-      <a class="button button-primary" href="download.html">Download SystemDS</a>
+    <div class="row">
+      <div class="col col-12 content-group button-group">
+        <a class="button button-primary" href="download.html">Download SystemDS</a>
+      </div>
     </div>
   </div>
   <!-- video background  -->
@@ -37,11 +41,13 @@ limitations under the License.
 <!-- Announcements Banner -->
 <section class="full-stripe full-stripe--alternate">
   <div class="ml-container ml-container--narrow">
-    <div class="col-4" id="award">
-    </div>
-    <div class="col-8">
-      <h3>SystemML is now SystemDS</h3>
-      <p>To reflect the change of focus to the end-to-end data science lifecycle
+    <div class="row">
+      <div class="col col-4" id="award">
+      </div>
+      <div class="col col-8">
+        <h3>SystemML is now SystemDS</h3>
+        <p>To reflect the change of focus to the end-to-end data science lifecycle
+      </div>
     </div>
   </div>
 </section>
@@ -49,19 +55,21 @@ limitations under the License.
 <!-- About -->
 <section class="full-stripe">
   <div class="ml-container ml-container--vertically-top ml-container--reverse-order">
-    <div class="col col-6 content-group">
-      <img src="/assets/img/diagramAnim-v4.gif" alt="What is Apache SystemDS?">
-    </div>
-    <div class="col col-6 content-group content-group--more-padding">
-      <!-- bdi tag prevents reverse punctuation when rtl direction property is applied -->
-      <h2><bdi>What is SystemDS?</bdi></h2>
-      <p>SystemDS is an open source ML system for the end-to-end data science lifecycle from
-        data integration, cleaning, and feature engineering, over efficient, local and distributed
-        ML model training, to deployment and serving. To this end, it provides a stack of declarative
-        languages with R-like syntax for (1) the different tasks of the data-science lifecycle, and
-        (2) users with different expertise. These high-level scripts are compiled into hybrid execution
-        plans of local, in-memory CPU and GPU operations, as well as distributed operations on Apache Spark
-      </p>
+    <div class="row">
+      <div class="col col-6 content-group">
+        <img src="/assets/img/diagramAnim-v4.gif" alt="What is Apache SystemDS?">
+      </div>
+      <div class="col col-6 content-group content-group--more-padding">
+        <!-- bdi tag prevents reverse punctuation when rtl direction property is applied -->
+        <h2><bdi>What is SystemDS?</bdi></h2>
+        <p>SystemDS is an open source ML system for the end-to-end data science lifecycle from
+          data integration, cleaning, and feature engineering, over efficient, local and distributed
+          ML model training, to deployment and serving. To this end, it provides a stack of declarative
+          languages with R-like syntax for (1) the different tasks of the data-science lifecycle, and
+          (2) users with different expertise. These high-level scripts are compiled into hybrid execution
+          plans of local, in-memory CPU and GPU operations, as well as distributed operations on Apache Spark
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -69,16 +77,18 @@ limitations under the License.
 <!-- BGet Started -->
 <section class="full-stripe full-stripe--alternate">
   <div class="ml-container ml-container--vertically-centered">
-    <div class="col col-6 content-group content-group--more-padding">
-      <img src="/assets/img/robotTutorialSm.png" alt="What is Apache SystemDS?">
-    </div>
-    <div class="col col-6 content-group content-group--more-padding button-group">
-      <h2>Install SystemDS</h2>
-      <p>New to Apache SystemDS? Try our quick install guide that will walk you through setting up your environment and
-        getting you up and going with SystemDS.</p>
-      <a class="button button-primary" href="{{ site.data.project.docs }}site/install">Install SystemDS</a>
-      <!-- <a class="button button-secondary" href="get-started.html#sample-notebook">Notebooks</a> -->
-      <a class="button button-secondary" href="documentation.html" target="_blank">Docs</a>
+    <div class="row">
+      <div class="col col-6 content-group content-group--more-padding">
+        <img src="/assets/img/robotTutorialSm.png" alt="What is Apache SystemDS?">
+      </div>
+      <div class="col col-6 content-group content-group--more-padding button-group">
+        <h2>Install SystemDS</h2>
+        <p>New to Apache SystemDS? Try our quick install guide that will walk you through setting up your environment and
+          getting you up and going with SystemDS.</p>
+        <a class="button button-primary" href="{{ site.data.project.docs }}site/install">Install SystemDS</a>
+        <!-- <a class="button button-secondary" href="get-started.html#sample-notebook">Notebooks</a> -->
+        <a class="button button-secondary" href="documentation.html" target="_blank">Docs</a>
+      </div>
     </div>
   </div>
 
@@ -99,18 +109,22 @@ limitations under the License.
 <!-- Contact Us -->
 <section class="full-stripe">
   <div class="ml-container ml-container--horizontally-center">
-    <div class="col col-12 content-group ">
-      <h2>Contribute</h2>
-      <p>Contribute to Apache SystemDS<sup>TM</sup> by subscribing to our developer mailing list for updates and news.
-        Check out <a href="community.html#mailing-list">All Mailing Lists</a>.
-      </p>
+    <div class="row">
+      <div class="col col-12 content-group ">
+        <h2>Contribute</h2>
+        <p>Contribute to Apache SystemDS<sup>TM</sup> by subscribing to our developer mailing list for updates and news.
+          Check out <a href="community.html#mailing-list">All Mailing Lists</a>.
+        </p>
+      </div>
     </div>
-    <div class="col col-12 content-group button-group">
-      <a href="mailto:{{ site.data.project.dev_list_subscribe }}?subject=send this email to subscribe"
-        class="button button-primary">Subscribe</a>
-      <a href="{{ site.data.project.dev_list_archive }}" target="_blank" class="button button-secondary">View
-        Archive</a>
-      <a href="/roadmap" target="_blank" class="button button-secondary">Roadmap</a>
+    <div class="row">
+      <div class="col col-12 content-group button-group">
+        <a href="mailto:{{ site.data.project.dev_list_subscribe }}?subject=send this email to subscribe"
+          class="button button-primary">Subscribe</a>
+        <a href="{{ site.data.project.dev_list_archive }}" target="_blank" class="button button-secondary">View
+          Archive</a>
+        <a href="/roadmap" target="_blank" class="button button-secondary">Roadmap</a>
+      </div>
     </div>
   </div>
 </section>
@@ -118,15 +132,19 @@ limitations under the License.
 <!-- Social Media Icons -->
 <section class="full-stripe full-stripe--alternate">
   <div class="ml-container">
-    <div class="col col-12 content-group content-group--center-content content-group--center-align">
-      <h2>Follow Us</h2>
+    <div class="row">
+      <div class="col col-12 content-group content-group--center-content content-group--center-align">
+        <h2>Follow Us</h2>
+      </div>
     </div>
-    <div class="col col-12">
-      <ul class="link-list bullet-pointless">
-        <li><a class="icon icon-github" href="{{ site.data.project.source_repository_mirror }}" target="_blank"></a>
-        </li>
-        <li><a class="icon icon-twitter" href="https://twitter.com/ApacheSystemDS" target="_blank"></a></li>
-      </ul>
+    <div class="row">
+      <div class="col col-12">
+        <ul class="link-list bullet-pointless">
+          <li><a class="icon icon-github" href="{{ site.data.project.source_repository_mirror }}" target="_blank"></a>
+          </li>
+          <li><a class="icon icon-twitter" href="https://twitter.com/ApacheSystemDS" target="_blank"></a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
