@@ -1,4 +1,237 @@
-/* TOC styles - placeholder */
-.toc-placeholder {
-  /* Add table of contents styles here */
+/*
+ * Table of Contents styles for Android theme
+ */
+
+.table-of-contents {
+  position: fixed;
+  top: var(--layout-header-height);
+  right: 0;
+  width: var(--layout-toc-width);
+  height: calc(100vh - var(--layout-header-height));
+  background-color: var(--color-surface);
+  border-left: 1px solid var(--color-outline);
+  z-index: var(--z-sticky);
+  overflow: hidden;
+  
+  @media (max-width: 1200px) {
+    display: none;
+  }
+}
+
+.toc-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-4);
+}
+
+.toc-header {
+  margin-bottom: var(--space-4);
+}
+
+.toc-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-on-surface);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.toc-nav {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: var(--space-4);
+}
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-item {
+  margin: 0;
+  
+  &.toc-level-h1 {
+    margin-top: var(--space-4);
+    
+    &:first-child {
+      margin-top: 0;
+    }
+    
+    .toc-link {
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-sm);
+      color: var(--color-on-surface);
+      padding-left: 0;
+    }
+  }
+  
+  &.toc-level-h2 {
+    .toc-link {
+      padding-left: var(--space-4);
+      font-size: var(--font-size-sm);
+    }
+  }
+  
+  &.toc-level-h3 {
+    .toc-link {
+      padding-left: var(--space-6);
+      font-size: var(--font-size-xs);
+    }
+  }
+  
+  &.toc-level-h4,
+  &.toc-level-h5,
+  &.toc-level-h6 {
+    .toc-link {
+      padding-left: var(--space-8);
+      font-size: var(--font-size-xs);
+      color: var(--color-on-surface-disabled);
+    }
+  }
+}
+
+.toc-link {
+  display: block;
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  color: var(--color-on-surface-variant);
+  text-decoration: none;
+  line-height: var(--line-height-tight);
+  border-radius: var(--radius-base);
+  transition: all var(--transition-fast);
+  position: relative;
+  font-size: var(--font-size-xs);
+  
+  &:hover {
+    color: var(--color-primary);
+    background-color: var(--color-surface-variant);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  
+  &.active {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: -var(--space-3);
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: var(--color-primary);
+      border-radius: 1px;
+    }
+  }
+}
+
+/* Progress indicator */
+.toc-progress {
+  height: 2px;
+  background-color: var(--color-surface-container);
+  border-radius: 1px;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.toc-progress-bar {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: 1px;
+  transition: width var(--transition-fast);
+  width: 0%;
+}
+
+/* Heading anchor links */
+.heading-anchor {
+  opacity: 0;
+  margin-left: var(--space-2);
+  color: var(--color-outline);
+  text-decoration: none;
+  font-weight: normal;
+  transition: opacity var(--transition-fast);
+  font-size: 0.8em;
+  vertical-align: middle;
+  
+  &:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  
+  &:focus {
+    opacity: 1;
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  
+  .material-icons {
+    font-size: inherit;
+    vertical-align: inherit;
+  }
+}
+
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor {
+  opacity: 1;
+}
+
+/* Scrollbar styling for TOC */
+.toc-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toc-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toc-nav::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 2px;
+}
+
+.toc-nav::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* Mobile TOC toggle (for future implementation) */
+@media (max-width: 1200px) {
+  .toc-mobile-toggle {
+    position: fixed;
+    bottom: var(--space-6);
+    right: var(--space-6);
+    width: 56px;
+    height: 56px;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border: none;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    z-index: var(--z-modal);
+    transition: all var(--transition-fast);
+    
+    &:hover {
+      box-shadow: var(--shadow-xl);
+      transform: translateY(-2px);
+    }
+    
+    &:focus {
+      outline: 2px solid var(--color-secondary);
+      outline-offset: 2px;
+    }
+    
+    .material-icons {
+      font-size: 24px;
+    }
+  }
 }

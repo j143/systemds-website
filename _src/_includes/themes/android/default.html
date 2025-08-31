@@ -25,12 +25,12 @@ limitations under the License.
     {% include themes/android/partials/_header.html %}
     
     <div class="layout-container">
-      {% if page.layout == 'docs' or page.layout == 'guide' %}
+      {% if page.layout == 'android' %}
         {% include themes/android/partials/_sidebar.html %}
       {% endif %}
       
       <main id="main-content" class="main-content" role="main">
-        {% if page.layout == 'docs' or page.layout == 'guide' %}
+        {% if page.layout == 'android' %}
           {% include themes/android/partials/_breadcrumbs.html %}
         {% endif %}
         
@@ -39,7 +39,7 @@ limitations under the License.
             {{ content }}
           </article>
           
-          {% if page.layout == 'docs' or page.layout == 'guide' %}
+          {% if page.layout == 'android' %}
             {% include themes/android/partials/_toc.html %}
           {% endif %}
         </div>

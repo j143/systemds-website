@@ -1,4 +1,236 @@
-/* Sidebar styles - placeholder */
-.sidebar-placeholder {
-  /* Add sidebar styles here */
+/*
+ * Sidebar navigation styles for Android theme
+ */
+
+.sidebar-nav {
+  position: fixed;
+  top: var(--layout-header-height);
+  left: 0;
+  width: var(--layout-sidebar-width);
+  height: calc(100vh - var(--layout-header-height));
+  background-color: var(--color-surface-variant);
+  border-right: 1px solid var(--color-outline);
+  z-index: var(--z-fixed);
+  overflow: hidden;
+  transform: translateX(0);
+  transition: transform var(--transition-base);
+  
+  @media (max-width: 1024px) {
+    transform: translateX(-100%);
+    
+    &.sidebar-open {
+      transform: translateX(0);
+    }
+  }
+}
+
+.sidebar-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-outline);
+  background-color: var(--color-surface);
+}
+
+.sidebar-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-on-surface);
+  margin: 0;
+}
+
+.sidebar-toggle {
+  display: none;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-base);
+  color: var(--color-on-surface);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  
+  &:hover {
+    background-color: var(--color-surface-variant);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  
+  .material-icons {
+    font-size: 20px;
+  }
+  
+  @media (max-width: 1024px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.sidebar-nav-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4) 0;
+}
+
+/* Navigation Tree */
+.nav-tree {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-tree-item {
+  margin: 0;
+}
+
+.nav-tree-toggle,
+.nav-tree-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-3) var(--space-6);
+  color: var(--color-on-surface-variant);
+  text-decoration: none;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-radius: 0;
+  
+  &:hover {
+    background-color: var(--color-surface-container);
+    color: var(--color-on-surface);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+    background-color: var(--color-surface-container);
+  }
+}
+
+.nav-tree-link {
+  padding-left: var(--space-8);
+  
+  &.active,
+  &[aria-current="page"] {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-weight: var(--font-weight-medium);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: var(--color-secondary);
+    }
+  }
+}
+
+.nav-tree-toggle {
+  font-weight: var(--font-weight-medium);
+}
+
+.nav-tree-icon {
+  font-size: 18px;
+  margin-right: var(--space-2);
+  transition: transform var(--transition-fast);
+}
+
+.nav-tree-text {
+  flex: 1;
+  line-height: var(--line-height-normal);
+}
+
+/* Nested navigation */
+.nav-tree-children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-base);
+  background-color: var(--color-surface-container);
+  
+  .nav-tree-item {
+    position: relative;
+  }
+  
+  .nav-tree-link {
+    padding-left: var(--space-12);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Expanded state */
+.nav-tree-toggle[aria-expanded="true"] {
+  .nav-tree-icon {
+    transform: rotate(90deg);
+  }
+  
+  + .nav-tree-children {
+    max-height: 500px; /* Large enough to show all items */
+  }
+}
+
+/* Hover effects for tree items */
+.nav-tree-item:hover > .nav-tree-toggle .nav-tree-icon {
+  color: var(--color-primary);
+}
+
+/* Mobile sidebar overlay */
+@media (max-width: 1024px) {
+  .sidebar-nav::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+    z-index: -1;
+  }
+  
+  .sidebar-nav.sidebar-open::before {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Scrollbar styling for sidebar */
+.sidebar-nav-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-nav-content::-webkit-scrollbar-track {
+  background: var(--color-surface-variant);
+}
+
+.sidebar-nav-content::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 3px;
+}
+
+.sidebar-nav-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
 }
