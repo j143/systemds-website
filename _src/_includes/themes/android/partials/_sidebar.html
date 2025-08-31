@@ -1,0 +1,182 @@
+<!--
+{% comment %}
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to you under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+-->
+
+<aside class="sidebar-nav" id="sidebar-nav" role="navigation" aria-label="Documentation">
+  <div class="sidebar-content">
+    <div class="sidebar-header">
+      <h2 class="sidebar-title">Documentation</h2>
+      <button 
+        class="sidebar-toggle"
+        aria-label="Toggle sidebar"
+        data-sidebar-toggle
+      >
+        <span class="material-icons">chevron_left</span>
+      </button>
+    </div>
+    
+    <nav class="sidebar-nav-content">
+      <ul class="nav-tree" role="tree">
+        <!-- Getting Started Section -->
+        <li class="nav-tree-item" role="treeitem">
+          <button 
+            class="nav-tree-toggle"
+            aria-expanded="true"
+            data-nav-toggle
+          >
+            <span class="material-icons nav-tree-icon">expand_more</span>
+            <span class="nav-tree-text">Getting Started</span>
+          </button>
+          <ul class="nav-tree-children" role="group">
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/get-started" class="nav-tree-link">
+                <span class="nav-tree-text">Quick Start</span>
+              </a>
+            </li>
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/installation" class="nav-tree-link">
+                <span class="nav-tree-text">Installation</span>
+              </a>
+            </li>
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/first-steps" class="nav-tree-link">
+                <span class="nav-tree-text">First Steps</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+        <!-- User Guide Section -->
+        <li class="nav-tree-item" role="treeitem">
+          <button 
+            class="nav-tree-toggle"
+            aria-expanded="false"
+            data-nav-toggle
+          >
+            <span class="material-icons nav-tree-icon">chevron_right</span>
+            <span class="nav-tree-text">User Guide</span>
+          </button>
+          <ul class="nav-tree-children" role="group">
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/user-guide/overview" class="nav-tree-link">
+                <span class="nav-tree-text">Overview</span>
+              </a>
+            </li>
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/user-guide/language-reference" class="nav-tree-link">
+                <span class="nav-tree-text">Language Reference</span>
+              </a>
+            </li>
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/user-guide/algorithms" class="nav-tree-link">
+                <span class="nav-tree-text">Built-in Algorithms</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+        <!-- API Reference Section -->
+        <li class="nav-tree-item" role="treeitem">
+          <button 
+            class="nav-tree-toggle"
+            aria-expanded="false"
+            data-nav-toggle
+          >
+            <span class="material-icons nav-tree-icon">chevron_right</span>
+            <span class="nav-tree-text">API Reference</span>
+          </button>
+          <ul class="nav-tree-children" role="group">
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/api/python" class="nav-tree-link">
+                <span class="nav-tree-text">Python API</span>
+              </a>
+            </li>
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/api/java" class="nav-tree-link">
+                <span class="nav-tree-text">Java API</span>
+              </a>
+            </li>
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/api/r" class="nav-tree-link">
+                <span class="nav-tree-text">R API</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+        <!-- Tutorials Section -->
+        <li class="nav-tree-item" role="treeitem">
+          <button 
+            class="nav-tree-toggle"
+            aria-expanded="false"
+            data-nav-toggle
+          >
+            <span class="material-icons nav-tree-icon">chevron_right</span>
+            <span class="nav-tree-text">Tutorials</span>
+          </button>
+          <ul class="nav-tree-children" role="group">
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/tutorials/basics" class="nav-tree-link">
+                <span class="nav-tree-text">Basic Operations</span>
+              </a>
+            </li>
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/tutorials/machine-learning" class="nav-tree-link">
+                <span class="nav-tree-text">Machine Learning</span>
+              </a>
+            </li>
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/tutorials/performance" class="nav-tree-link">
+                <span class="nav-tree-text">Performance Tuning</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+        <!-- Development Section -->
+        <li class="nav-tree-item" role="treeitem">
+          <button 
+            class="nav-tree-toggle"
+            aria-expanded="false"
+            data-nav-toggle
+          >
+            <span class="material-icons nav-tree-icon">chevron_right</span>
+            <span class="nav-tree-text">Development</span>
+          </button>
+          <ul class="nav-tree-children" role="group">
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/development/contributing" class="nav-tree-link">
+                <span class="nav-tree-text">Contributing</span>
+              </a>
+            </li>
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/development/building" class="nav-tree-link">
+                <span class="nav-tree-text">Building from Source</span>
+              </a>
+            </li>
+            <li class="nav-tree-item" role="treeitem">
+              <a href="/development/testing" class="nav-tree-link">
+                <span class="nav-tree-text">Testing</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

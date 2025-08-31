@@ -1,0 +1,223 @@
+<!--
+{% comment %}
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to you under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+-->
+
+<header class="app-header" role="banner">
+  <div class="header-container">
+    <!-- Logo and Title -->
+    <div class="header-brand">
+      <a href="/" class="brand-link" aria-label="Apache SystemDS Home">
+        <img src="/assets/img/systemds-logo.svg" alt="SystemDS Logo" class="brand-logo">
+        <span class="brand-text">
+          <span class="brand-name">Apache SystemDS</span>
+          <sup class="trademark">&trade;</sup>
+        </span>
+      </a>
+    </div>
+    
+    <!-- Mobile menu toggle -->
+    <button 
+      class="mobile-menu-toggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      data-mobile-menu-toggle
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    
+    <!-- Primary Navigation -->
+    <nav class="primary-nav" id="primary-navigation" role="navigation" aria-label="Primary">
+      <ul class="nav-list">
+        {% for entry in site.data.navigation.topnav %}
+        <li class="nav-item">
+          {% if entry.subcategories %}
+            <button 
+              class="nav-link nav-link--dropdown" 
+              aria-expanded="false"
+              aria-haspopup="true"
+              data-dropdown-toggle
+            >
+              {{ entry.title }}
+              <span class="material-icons nav-icon">keyboard_arrow_down</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              {% for subitem in entry.subcategories %}
+              <li role="none">
+                {% if subitem.url contains "http" %}
+                  {% assign target = "_blank" %}
+                  {% assign rel = "noopener noreferrer" %}
+                {% else %}
+                  {% assign target = "_self" %}
+                  {% assign rel = "" %}
+                {% endif %}
+                <a 
+                  href="{{ subitem.url }}" 
+                  target="{{ target }}"
+                  {% if rel %}rel="{{ rel }}"{% endif %}
+                  class="dropdown-link"
+                  role="menuitem"
+                >
+                  {{ subitem.title }}
+                  {% if target == "_blank" %}
+                    <span class="material-icons external-icon">open_in_new</span>
+                  {% endif %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            {% if entry.url contains "http" %}
+              {% assign target = "_blank" %}
+              {% assign rel = "noopener noreferrer" %}
+            {% else %}
+              {% assign target = "_self" %}
+              {% assign rel = "" %}
+            {% endif %}
+            <a 
+              href="{{ entry.url }}" 
+              target="{{ target }}"
+              {% if rel %}rel="{{ rel }}"{% endif %}
+              class="nav-link"
+            >
+              {{ entry.title }}
+              {% if target == "_blank" %}
+                <span class="material-icons external-icon">open_in_new</span>
+              {% endif %}
+            </a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <!-- Search -->
+      <div class="search-container">
+        <button 
+          class="search-toggle"
+          aria-label="Open search"
+          data-search-toggle
+        >
+          <span class="material-icons">search</span>
+        </button>
+        <div class="search-box" data-search-box>
+          <form class="search-form" role="search">
+            <label for="search-input" class="sr-only">Search documentation</label>
+            <input 
+              type="search" 
+              id="search-input"
+              class="search-input"
+              placeholder="Search documentation..."
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
+              data-search-input
+            >
+            <button type="submit" class="search-submit" aria-label="Submit search">
+              <span class="material-icons">search</span>
+            </button>
+            <button type="button" class="search-clear" aria-label="Clear search" data-search-clear>
+              <span class="material-icons">close</span>
+            </button>
+          </form>
+          <div class="search-results" data-search-results></div>
+        </div>
+      </div>
+      
+      <!-- Theme Toggle -->
+      <button 
+        class="theme-toggle"
+        aria-label="Toggle dark mode"
+        data-theme-toggle
+      >
+        <span class="material-icons theme-icon theme-icon--light">light_mode</span>
+        <span class="material-icons theme-icon theme-icon--dark">dark_mode</span>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-overlay" data-mobile-nav-overlay>
+    <nav class="mobile-nav" role="navigation" aria-label="Mobile">
+      <ul class="mobile-nav-list">
+        {% for entry in site.data.navigation.topnav %}
+        <li class="mobile-nav-item">
+          {% if entry.subcategories %}
+            <button 
+              class="mobile-nav-link mobile-nav-link--dropdown" 
+              aria-expanded="false"
+              data-mobile-dropdown-toggle
+            >
+              {{ entry.title }}
+              <span class="material-icons mobile-nav-icon">keyboard_arrow_down</span>
+            </button>
+            <ul class="mobile-dropdown">
+              {% for subitem in entry.subcategories %}
+              <li>
+                {% if subitem.url contains "http" %}
+                  {% assign target = "_blank" %}
+                  {% assign rel = "noopener noreferrer" %}
+                {% else %}
+                  {% assign target = "_self" %}
+                  {% assign rel = "" %}
+                {% endif %}
+                <a 
+                  href="{{ subitem.url }}" 
+                  target="{{ target }}"
+                  {% if rel %}rel="{{ rel }}"{% endif %}
+                  class="mobile-dropdown-link"
+                >
+                  {{ subitem.title }}
+                  {% if target == "_blank" %}
+                    <span class="material-icons external-icon">open_in_new</span>
+                  {% endif %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            {% if entry.url contains "http" %}
+              {% assign target = "_blank" %}
+              {% assign rel = "noopener noreferrer" %}
+            {% else %}
+              {% assign target = "_self" %}
+              {% assign rel = "" %}
+            {% endif %}
+            <a 
+              href="{{ entry.url }}" 
+              target="{{ target }}"
+              {% if rel %}rel="{{ rel }}"{% endif %}
+              class="mobile-nav-link"
+            >
+              {{ entry.title }}
+              {% if target == "_blank" %}
+                <span class="material-icons external-icon">open_in_new</span>
+              {% endif %}
+            </a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

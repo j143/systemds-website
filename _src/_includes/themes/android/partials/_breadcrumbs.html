@@ -1,0 +1,61 @@
+<!--
+{% comment %}
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to you under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+-->
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="/" class="breadcrumb-link" itemprop="item">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    
+    {% if page.url != '/' %}
+      {% assign url_parts = page.url | split: '/' %}
+      {% assign current_path = '' %}
+      {% assign position = 2 %}
+      
+      {% for part in url_parts %}
+        {% unless part == '' %}
+          {% assign current_path = current_path | append: '/' | append: part %}
+          {% assign is_last = forloop.last %}
+          
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            {% if is_last %}
+              <span class="breadcrumb-current" itemprop="name" aria-current="page">
+                {% if page.title %}
+                  {{ page.title }}
+                {% else %}
+                  {{ part | replace: '-', ' ' | replace: '_', ' ' | capitalize }}
+                {% endif %}
+              </span>
+            {% else %}
+              <a href="{{ current_path }}" class="breadcrumb-link" itemprop="item">
+                <span itemprop="name">{{ part | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</span>
+              </a>
+            {% endif %}
+            <meta itemprop="position" content="{{ position }}" />
+          </li>
+          
+          {% assign position = position | plus: 1 %}
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
+  </ol>
+</nav>

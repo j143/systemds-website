@@ -1,0 +1,126 @@
+<!--
+{% comment %}
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to you under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Title and Description -->
+  <title>{% if page.title %}{{ page.title }}{% if page.title != site.title %} | {{ site.title }}{% endif %}{% else %}{{ site.title }}{% endif %}</title>
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}">
+  {% elsif page.excerpt %}
+  <meta name="description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}">
+  {% else %}
+  <meta name="description" content="{{ site.description }}">
+  {% endif %}
+  <meta name="author" content="{{ site.author }}">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  {% if page.image %}
+  <meta property="og:image" content="{{ page.image | absolute_url }}">
+  {% else %}
+  <meta property="og:image" content="{{ '/assets/img/systemds-social-card.png' | absolute_url }}">
+  {% endif %}
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  {% if page.image %}
+  <meta name="twitter:image" content="{{ page.image | absolute_url }}">
+  {% else %}
+  <meta name="twitter:image" content="{{ '/assets/img/systemds-social-card.png' | absolute_url }}">
+  {% endif %}
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "{% if page.layout == 'post' %}Article{% else %}WebSite{% endif %}",
+    "name": "{{ site.title }}",
+    "headline": "{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}",
+    "description": "{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}",
+    "url": "{{ page.url | absolute_url }}",
+    {% if page.image %}
+    "image": "{{ page.image | absolute_url }}",
+    {% endif %}
+    "author": {
+      "@type": "Organization",
+      "name": "Apache Software Foundation"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Apache SystemDS",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ '/assets/img/systemds-logo.png' | absolute_url }}"
+      }
+    }
+  }
+  </script>
+  
+  <!-- Theme color detection -->
+  <meta name="theme-color" content="#1976d2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Initialize theme -->
+  <script>
+    // Initialize theme before DOM loads to prevent FOUC
+    (function() {
+      const theme = localStorage.getItem('theme') || 
+                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  
+  <!-- Search Index Preload -->
+  {% if site.search_enabled %}
+  <link rel="preload" href="/assets/js/search-index.json" as="fetch" crossorigin>
+  {% endif %}
+</head>

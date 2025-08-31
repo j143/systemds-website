@@ -1,0 +1,110 @@
+/*
+ * Breadcrumbs styles for Android theme
+ */
+
+.breadcrumbs {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-outline);
+  margin-bottom: var(--space-6);
+  
+  @media (max-width: 768px) {
+    padding: var(--space-3) 0;
+    margin-bottom: var(--space-4);
+  }
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--space-2);
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  
+  &:not(:last-child)::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid var(--color-on-surface-disabled);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    margin-left: var(--space-2);
+    opacity: 0.6;
+  }
+  
+  &:last-child {
+    color: var(--color-on-surface);
+  }
+}
+
+.breadcrumb-link {
+  color: var(--color-on-surface-variant);
+  text-decoration: none;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-base);
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    color: var(--color-primary);
+    background-color: var(--color-surface-variant);
+    text-decoration: none;
+  }
+  
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    color: var(--color-primary);
+  }
+}
+
+.breadcrumb-current {
+  color: var(--color-on-surface);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-2);
+  
+  /* Truncate long titles on mobile */
+  @media (max-width: 480px) {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .breadcrumb-list {
+    gap: var(--space-1);
+  }
+  
+  .breadcrumb-item {
+    font-size: var(--font-size-xs);
+    
+    &:not(:last-child)::after {
+      border-left-width: 3px;
+      border-top-width: 3px;
+      border-bottom-width: 3px;
+      margin-left: var(--space-1);
+    }
+  }
+  
+  .breadcrumb-link,
+  .breadcrumb-current {
+    padding: var(--space-1);
+  }
+}
+
+/* Skip breadcrumbs for very small screens when content is long */
+@media (max-width: 360px) {
+  .breadcrumbs {
+    display: none;
+  }
+}
