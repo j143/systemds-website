@@ -1,3 +1,6 @@
+// Import design tokens first
+@import "design-tokens";
+
 @import "vendor/ap-components.min.scss";
 @import "config.scss";
 
@@ -31,3 +34,8 @@
 @import "banners.scss";
 
 @import "modules.scss";
+
+// Android Theme Styles (conditionally loaded)
+.android-theme {
+  @import "android-theme";
+}
